@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+<html>
+    <head>
+        {% block title %}
+        All Transactions
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        <br>
+        <br>
+        <h2 style="font-family: cursive; margin-left: 500px;"> ALL Transactions </h2>
+        <br>
+        <br>
+        <table class="table table-dark table-striped" >
+            <thead>
+              <tr>
+                <th scope="col">User Id</th>
+                <th scope="col">sender</th>
+                <th scope="col">User Id</th>
+                <th scope="col">Reciver</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Transaction Time</th>
+                	
+                               
+              </tr>
+            </thead>
+            <tbody>
+                {% for c in history %}
+              <tr>
+                <th scope="row">{{c.tx_from.pk}}</th>
+                <td>{{c.tx_from.first_name}} {{c.tx_from.last_name}}</td>
+                <td>{{c.tx_to.pk}}</td>
+                <td>{{c.tx_to.first_name}} {{c.tx_to.last_name}}</td>
+                <td>{{c.amount}}</td>
+                <td>{{c.time}}</td>
+              </tr>
+              {% endfor %}
+              
+             
+            </tbody>
+          </table>
+          {% endblock %}
+        
+       
+    </body>
+</html>

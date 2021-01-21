@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+<html>
+    <head>
+        {% block title %}Transfer{% endblock %}
+    </head>
+    <body>
+        <br>
+        <br>
+        {% block body %}
+        <br>
+        <br>
+        {% if msg %}
+        <div class="alert alert-primary" role="alert">
+           {{msg}}
+          </div>
+        {% endif %}
+
+        <table class="table table-dark table-striped" style="width: 1000px;margin-left: 100px;" >
+            <thead>
+              <tr>
+                <th scope="col">User Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+        
+                <th scope="col">Current Balance</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+               
+              <tr>
+                <th scope="row">{{user.pk}}</th>
+                <td>{{user.first_name}} {{c.last_name}}</td>
+                <td>{{user.user_email}}</td>
+                <td>{{user.current_balance}}</td>
+                
+              </tr>
+              
+              
+             
+            </tbody>
+          </table>
+          <form action = "" method = "post" style="margin-left:100px ;border:2px solid black;margin-right: 500px; padding-left: 20px ;padding-top: 20px;padding-bottom: 20px;"> 
+            {% csrf_token %} 
+            {{form.as_p }} 
+            <button type="submit"  class="btn btn-success">Transfer Money</button>
+          </form>
+         
+        
+        {% endblock %}
+    </body>
+</html>
